@@ -11,4 +11,14 @@ RSpec.describe Match do
     match = Match.new
     expect { match.board = nil }.to raise_error(NoMethodError)
   end
+
+  it "white pieces start" do
+    match = Match.new
+    expect(match.current_movement).to eq("white")
+  end
+
+  it "current_movement needs to be private" do
+    match = Match.new
+    expect { match.current_movement = nil }.to raise_error(NoMethodError)
+  end
 end
