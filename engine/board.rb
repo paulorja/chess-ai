@@ -1,5 +1,7 @@
 class Board
 
+  attr_reader :matrix
+
   def initialize
     @matrix = [
       [-2, -3, -4, -5, -6, -4, -3, -2],
@@ -20,17 +22,15 @@ class Board
   end
 
   def movement(movement)
-    return false unless is_valid_movement? movement
     from = BoardMapping::SQUARES[movement[0..1].to_sym]
     to = BoardMapping::SQUARES[movement[2..3].to_sym]
-    @matrix[to[0]][to[1]] = @matrix[from[0]][from[1]]
-    @matrix[from[0]][from[1]] = 0
-  end
+    piece_from = @matrix[from[0]][from[1]]
 
-  private
+    if MovementHelper.is_valid(self, from, to)
+      @matrix[to[0]][to[1]] = @matrix[from[0]][from[1]]
+      @matrix[from[0]][from[1]] = 0
+    end
 
-  def is_valid_movement?(movement)
-    true
   end
 
 end

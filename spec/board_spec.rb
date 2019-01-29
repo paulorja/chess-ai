@@ -18,10 +18,5 @@ RSpec.describe Board do
     expect(board.get_square("a1")).to eq(2)
     expect(board.get_square("h1")).to eq(2)
   end
-  it "movements" do
-    board = Board.new
-    board.movement("e2e4")
-    expect(board.get_square("e2")).to eq(0)
-    expect(board.get_square("e4")).to eq(1)
-  end
+
 end
